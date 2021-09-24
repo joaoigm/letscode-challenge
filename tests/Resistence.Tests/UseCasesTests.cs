@@ -31,7 +31,7 @@ namespace Resistence.Tests
         [Fact]
         public async Task AtualizarLocalizacao_WhenCalled_ShouldReturnAtualizarLocalizacaoResult_Object()
         {
-            var result = await this.rebeldesUseCase.AtualizarLocalizacao(new Entities.DTOs.LocalizacaoDTO
+            var result = await this.rebeldesUseCase.AtualizarLocalizacao(new Entities.DTOs.LocalizacaoDto
             {
                 Latitude = "123",
                 Longitude = "456",
@@ -45,7 +45,7 @@ namespace Resistence.Tests
         [Fact]
         public void AtualizarLocalizacao_WhenCalled_ShouldReturn_RebeldeNaoEncontradoException()
         {
-            Assert.ThrowsAsync<RebeldeNaoEncontradoException>(() => this.rebeldesUseCase.AtualizarLocalizacao(new Entities.DTOs.LocalizacaoDTO
+            Assert.ThrowsAsync<RebeldeNaoEncontradoException>(() => this.rebeldesUseCase.AtualizarLocalizacao(new Entities.DTOs.LocalizacaoDto
             {
                 Latitude = "123",
                 Longitude = "456",
@@ -60,7 +60,7 @@ namespace Resistence.Tests
                 this.reportarUseCase.Reportar(2);
             }
 
-            Assert.ThrowsAsync<RebeldeTraidorException>(() =>  this.rebeldesUseCase.AtualizarLocalizacao(new Entities.DTOs.LocalizacaoDTO
+            Assert.ThrowsAsync<RebeldeTraidorException>(() =>  this.rebeldesUseCase.AtualizarLocalizacao(new Entities.DTOs.LocalizacaoDto
             {
                 Latitude = "123",
                 Longitude = "456",
@@ -75,7 +75,7 @@ namespace Resistence.Tests
                 await this.reportarUseCase.Reportar(3);
             }
 
-           var result = await this.rebeldesUseCase.AtualizarLocalizacao(new Entities.DTOs.LocalizacaoDTO
+           var result = await this.rebeldesUseCase.AtualizarLocalizacao(new Entities.DTOs.LocalizacaoDto
             {
                 Latitude = "123",
                 Longitude = "456",

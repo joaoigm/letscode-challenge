@@ -25,16 +25,16 @@ namespace Resistence.Entities
         [DefaultValue(false)]
         public bool Traidor { get; set; }
         [NotMapped]
-        public IDictionary<ItemInventario, int> Inventario { get; set; }
+        public IDictionary<ITEM_INVENTARIO, int> Inventario { get; set; }
 
         public string JsonInventory {
             get => JsonSerializer.Serialize(this.Inventario);
-            set => Inventario = JsonSerializer.Deserialize<IDictionary<ItemInventario, int>>(value);
+            set => Inventario = JsonSerializer.Deserialize<IDictionary<ITEM_INVENTARIO, int>>(value);
         }
 
         public Rebelde() {}
 
-        public Rebelde(AdicionarRebeldeDTO dto) {
+        public Rebelde(AdicionarRebeldeDto dto) {
             this.Nome = dto.Nome;
             this.Idade = dto.Idade;
             this.Genero = dto.Genero;
@@ -43,27 +43,27 @@ namespace Resistence.Entities
                 Longitude = dto.Localizacao.Longitude,
                 Nome = dto.Localizacao.Nome
             };
-            this.Inventario = new Dictionary<ItemInventario, int>((IDictionary<ItemInventario, int>)dto.Inventario.Select(data => new KeyValuePair<ItemInventario, int>(pegarItemInventarioCerto(data.Key), data.Value)));
+            this.Inventario = new Dictionary<ITEM_INVENTARIO, int>((IDictionary<ITEM_INVENTARIO, int>)dto.Inventario.Select(data => new KeyValuePair<ITEM_INVENTARIO, int>(pegarITEM_INVENTARIOCerto(data.Key), data.Value)));
         }
 
-        private ItemInventario pegarItemInventarioCerto(ItemInventarioDTO item){
+        private ITEM_INVENTARIO pegarITEM_INVENTARIOCerto(ITEM_INVENTARIODTO item){
             switch(item) {
-                case ItemInventarioDTO.ARMA:
-                    return ItemInventario.ARMA;
-                case ItemInventarioDTO.MUNICAO:
-                    return ItemInventario.MUNICAO;
-                case ItemInventarioDTO.AGUA:
-                    return ItemInventario.AGUA;
-                case ItemInventarioDTO.COMIDA:
-                    return ItemInventario.COMIDA;
+                case ITEM_INVENTARIODTO.ARMA:
+                    return ITEM_INVENTARIO.ARMA;
+                case ITEM_INVENTARIODTO.MUNICAO:
+                    return ITEM_INVENTARIO.MUNICAO;
+                case ITEM_INVENTARIODTO.AGUA:
+                    return ITEM_INVENTARIO.AGUA;
+                case ITEM_INVENTARIODTO.COMIDA:
+                    return ITEM_INVENTARIO.COMIDA;
 
                 default:
-                    return ItemInventario.AGUA;
+                    return ITEM_INVENTARIO.AGUA;
             }
         }
     }
 
-    public enum ItemInventario
+    public enum ITEM_INVENTARIO
     {
         ARMA,
         MUNICAO,
@@ -71,10 +71,10 @@ namespace Resistence.Entities
         COMIDA
     }
 
-    public class GeneroValidation : ValidationAttribute {
+    public class GeneroValidationAttribute : ValidationAttribute {
         public override bool IsValid(object value)
         {
-            return value.GetType() == typeof(char) && (
+            return value is char && (
                 (char)value == 'M' || (char)value == 'F' || (char)value == 'O'
             );
         }

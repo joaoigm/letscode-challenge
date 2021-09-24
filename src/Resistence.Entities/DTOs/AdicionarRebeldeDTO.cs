@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Resistence.Entities.DTOs
 {
-    public class AdicionarRebeldeDTO
+    public class AdicionarRebeldeDto
     {
         [JsonPropertyName("nome")]
         public string Nome { get; set; }
@@ -12,13 +12,13 @@ namespace Resistence.Entities.DTOs
         [JsonPropertyName("genero")]
         public char Genero { get; set; }
         [JsonPropertyName("localizacao")]
-        public LocalizacaoDTO Localizacao { get; set; }
+        public LocalizacaoDto Localizacao { get; set; }
         [JsonPropertyName("inventario")]
-        public IDictionary<ItemInventarioDTO, int> Inventario { get; set; }
+        public IDictionary<ITEM_INVENTARIODTO, int> Inventario { get; set; }
     }
 
 
-    public enum ItemInventarioDTO
+    public enum ITEM_INVENTARIODTO
     {
         ARMA,
         MUNICAO,

@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace Resistence.Entities.DTOs
 {
-    public class LocalizacaoDTO
+    public class LocalizacaoDto
     {
         [JsonPropertyName("latitude")]
         public string Latitude { get; set; }

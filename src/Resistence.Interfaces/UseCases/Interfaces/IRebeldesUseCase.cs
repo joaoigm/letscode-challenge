@@ -6,7 +6,7 @@ namespace Resistence.Interfaces.UseCases.Interfaces
 {
     public interface IRebeldesUseCase
     {
-        Task<AdicionarRebeldeResult> AdicionarRebelde(AdicionarRebeldeDTO rebelde);
-        Task<AtualizarLocalizacaoResult> AtualizarLocalizacao(LocalizacaoDTO novaLocalizacao, int codigoRebelde);
+        Task<AdicionarRebeldeResult> AdicionarRebelde(AdicionarRebeldeDto rebelde);
+        Task<AtualizarLocalizacaoResult> AtualizarLocalizacao(LocalizacaoDto novaLocalizacao, int codigoRebelde);
     }
 }

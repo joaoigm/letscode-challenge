@@ -7,7 +7,7 @@ namespace Resistence.Tests.Fakes
 {
     public class RebeldesUseCaseFake : IRebeldesUseCase
     {
-        public async Task<AdicionarRebeldeResult> AdicionarRebelde(AdicionarRebeldeDTO rebelde) => new AdicionarRebeldeResult
+        public async Task<AdicionarRebeldeResult> AdicionarRebelde(AdicionarRebeldeDto rebelde) => new AdicionarRebeldeResult
         {
             Genero = rebelde.Genero,
             Idade = rebelde.Idade,
@@ -15,7 +15,7 @@ namespace Resistence.Tests.Fakes
         };
 
 
-        public async Task<AtualizarLocalizacaoResult> AtualizarLocalizacao(LocalizacaoDTO novaLocalizacao, int codigoRebelde) => new AtualizarLocalizacaoResult {
+        public async Task<AtualizarLocalizacaoResult> AtualizarLocalizacao(LocalizacaoDto novaLocalizacao, int codigoRebelde) => new AtualizarLocalizacaoResult {
             Latitude = novaLocalizacao.Latitude,
             Longitude = novaLocalizacao.Longitude,
             Nome = novaLocalizacao.Nome

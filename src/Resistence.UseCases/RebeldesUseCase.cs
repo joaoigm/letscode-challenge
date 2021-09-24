@@ -21,7 +21,7 @@ namespace Resistence.UseCases
         }
 
         public RebeldesUseCase() { }
-        public async Task<AdicionarRebeldeResult> AdicionarRebelde(AdicionarRebeldeDTO rebelde)
+        public async Task<AdicionarRebeldeResult> AdicionarRebelde(AdicionarRebeldeDto rebelde)
         {
             Rebelde newRebelde = new Rebelde(rebelde);
 
@@ -30,7 +30,7 @@ namespace Resistence.UseCases
             return new AdicionarRebeldeResult(newRebelde);
         }
 
-        public async Task<AtualizarLocalizacaoResult> AtualizarLocalizacao(LocalizacaoDTO novaLocalizacao, int codigoRebelde)
+        public async Task<AtualizarLocalizacaoResult> AtualizarLocalizacao(LocalizacaoDto novaLocalizacao, int codigoRebelde)
         {
 
             if (!await _context.Rebeldes.AnyAsync(r => r.Id == codigoRebelde))

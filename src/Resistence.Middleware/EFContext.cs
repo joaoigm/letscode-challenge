@@ -60,11 +60,11 @@ namespace Resistence.Middleware
         }
 
         private void seed(ModelBuilder builder) {
-            Dictionary<ItemInventario, int> inventarioPadrao = new Dictionary<ItemInventario, int>();
-            inventarioPadrao.Add(ItemInventario.AGUA, 10);
-            inventarioPadrao.Add(ItemInventario.ARMA, 1);
-            inventarioPadrao.Add(ItemInventario.COMIDA, 20);
-            inventarioPadrao.Add(ItemInventario.MUNICAO, 50);
+            Dictionary<ITEM_INVENTARIO, int> inventarioPadrao = new Dictionary<ITEM_INVENTARIO, int>();
+            inventarioPadrao.Add(ITEM_INVENTARIO.AGUA, 10);
+            inventarioPadrao.Add(ITEM_INVENTARIO.ARMA, 1);
+            inventarioPadrao.Add(ITEM_INVENTARIO.COMIDA, 20);
+            inventarioPadrao.Add(ITEM_INVENTARIO.MUNICAO, 50);
 
             builder.Entity<Rebelde>()
                 .HasData(

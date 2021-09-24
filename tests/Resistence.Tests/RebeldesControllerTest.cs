@@ -20,7 +20,7 @@ namespace Resistence.Tests
         [Fact]
         public async Task Post_WhenCalled_ReturnOkObjectResult() 
         {
-            var result = await controller.Post(new Entities.DTOs.AdicionarRebeldeDTO {
+            var result = await controller.Post(new Entities.DTOs.AdicionarRebeldeDto {
                 Genero = 'O',
                 Idade = 25,
                 Nome = "Paul"

@@ -17,14 +17,14 @@ namespace Resistence.Api.Controllers
             _rebeldesUseCase = rebeldesUseCase;
         }
         [HttpPost]
-        public async Task<IActionResult> Post(AdicionarRebeldeDTO rebelde)
+        public async Task<IActionResult> Post(AdicionarRebeldeDto rebelde)
         {
             return Ok(await _rebeldesUseCase.AdicionarRebelde(rebelde));
         }
 
         [HttpPut("/{codigo}/localizacao")]
         public async Task<IActionResult> UpdateLocation(
-            [FromBody] LocalizacaoDTO localizacao,
+            [FromBody] LocalizacaoDto localizacao,
             [FromRoute]int codigo) {
             return Ok(await _rebeldesUseCase.AtualizarLocalizacao(localizacao, codigo));
         }
