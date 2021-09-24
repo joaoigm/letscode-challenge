@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Resistence.Entities\Resistence.Entities.csproj" />
+    <ProjectReference Include="..\Resistence.Interfaces\Resistence.Interfaces.csproj" />
+    <ProjectReference Include="..\Resistence.Middleware\Resistence.Middleware.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>
