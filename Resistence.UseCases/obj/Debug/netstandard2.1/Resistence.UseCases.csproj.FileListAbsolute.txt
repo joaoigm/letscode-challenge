@@ -1,0 +1,17 @@
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\bin\Debug\netstandard2.1\Resistence.UseCases.deps.json
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\bin\Debug\netstandard2.1\Resistence.UseCases.dll
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\bin\Debug\netstandard2.1\Resistence.UseCases.pdb
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\obj\Debug\netstandard2.1\Resistence.UseCases.csproj.AssemblyReference.cache
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\obj\Debug\netstandard2.1\Resistence.UseCases.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\obj\Debug\netstandard2.1\Resistence.UseCases.AssemblyInfoInputs.cache
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\obj\Debug\netstandard2.1\Resistence.UseCases.AssemblyInfo.cs
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\obj\Debug\netstandard2.1\Resistence.UseCases.csproj.CoreCompileInputs.cache
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\obj\Debug\netstandard2.1\Resistence.UseCases.dll
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\obj\Debug\netstandard2.1\Resistence.UseCases.pdb
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\bin\Debug\netstandard2.1\Resistence.Entities.dll
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\bin\Debug\netstandard2.1\Resistence.Interfaces.dll
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\bin\Debug\netstandard2.1\Resistence.Middleware.dll
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\bin\Debug\netstandard2.1\Resistence.Interfaces.pdb
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\bin\Debug\netstandard2.1\Resistence.Middleware.pdb
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\bin\Debug\netstandard2.1\Resistence.Entities.pdb
+C:\Users\joaoi\projects\projeto-letscode\Resistence.UseCases\obj\Debug\netstandard2.1\Resistence.UseCases.csproj.CopyComplete
