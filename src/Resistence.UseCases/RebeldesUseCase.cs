@@ -33,40 +33,35 @@ namespace Resistence.UseCases
         public async Task<AtualizarLocalizacaoResult> AtualizarLocalizacao(LocalizacaoDTO novaLocalizacao, int codigoRebelde)
         {
 
-            try
+            if (!await _context.Rebeldes.AnyAsync(r => r.Id == codigoRebelde))
             {
-                if (!await _context.Rebeldes.AnyAsync(r => r.Id == codigoRebelde))
-                {
-                    throw new RebeldeNaoEncontradoException(codigoRebelde);
-                }
-
-                Rebelde rebelde = await _context.Rebeldes
-                .AsTracking()
-                .Include(r => r.Localizacao)
-                .SingleAsync(re => re.Id.Equals(codigoRebelde));
-
-                rebelde.Localizacao.Latitude = novaLocalizacao.Latitude;
-                rebelde.Localizacao.Longitude = novaLocalizacao.Longitude;
-                rebelde.Localizacao.Nome = novaLocalizacao.Nome;
-
-                _context.Rebeldes.Update(rebelde);
-                await _context.SaveChangesAsync();
-
-                return new AtualizarLocalizacaoResult
-                {
-                    Latitude = rebelde.Localizacao.Latitude,
-                    Longitude = rebelde.Localizacao.Longitude,
-                    Nome = rebelde.Localizacao.Nome
-                };
+                throw new RebeldeNaoEncontradoException(codigoRebelde);
             }
-            catch (RebeldeNaoEncontradoException)
+
+
+            Rebelde rebelde = await _context.Rebeldes
+            .AsTracking()
+            .Include(r => r.Localizacao)
+            .SingleAsync(re => re.Id.Equals(codigoRebelde));
+
+            if(rebelde.Traidor) {
+                throw new RebeldeTraidorException(codigoRebelde);
+            }
+
+            rebelde.Localizacao.Latitude = novaLocalizacao.Latitude;
+            rebelde.Localizacao.Longitude = novaLocalizacao.Longitude;
+            rebelde.Localizacao.Nome = novaLocalizacao.Nome;
+
+            _context.Rebeldes.Update(rebelde);
+            await _context.SaveChangesAsync();
+
+            return new AtualizarLocalizacaoResult
             {
-                throw;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+                Latitude = rebelde.Localizacao.Latitude,
+                Longitude = rebelde.Localizacao.Longitude,
+                Nome = rebelde.Localizacao.Nome
+            };
+
 
         }
     }

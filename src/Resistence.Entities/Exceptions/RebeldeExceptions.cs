@@ -11,4 +11,9 @@ namespace Resistence.Entities.Exceptions
         }
     }
 
+    public class RebeldeTraidorException : Exception {
+        public RebeldeTraidorException(int codigo): base($"O Rebelde {codigo} é um traidor!") {}
+
+    }
+
 }

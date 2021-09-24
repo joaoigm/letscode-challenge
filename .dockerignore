@@ -1,0 +1,7 @@
+tests/**
+.vscode/**
+.github/**
+.git/**
+[Bb]in/
+[Oo]bj/
+[Ll]og/
