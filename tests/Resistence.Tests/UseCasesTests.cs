@@ -60,7 +60,7 @@ namespace Resistence.Tests
         public void ReportarRebelde_WhenCalled_ThreeTimes_RebeldeDeveSeTornarTraidor()
         {
             for(int i = 0; i < 3; i++) {
-                this.reportarUseCase.Reportar(2);
+                this.reportarUseCase.Reportar(4);
             }
 
             Assert.ThrowsAsync<RebeldeTraidorException>(() =>  this.rebeldesUseCase.AtualizarLocalizacao(new Entities.DTOs.LocalizacaoDto
@@ -172,6 +172,51 @@ namespace Resistence.Tests
 
 
             Assert.True(await this.negociacaoUseCase.Negociar(negociacaoDto));
+        }
+
+        [Fact]
+        public void Negociar_WhellCalled_WithRebelOneAsTraitor_ShoudThrowRebeldeTraidorException() {
+            var inventarioUm = new Dictionary<ITEM_INVENTARIODTO, int>();
+            var inventarioDois = new Dictionary<ITEM_INVENTARIODTO, int>();
+            
+            // A soma de pontos vai dar certo e a quantidade também. Deve retornar true
+            inventarioUm.Add(ITEM_INVENTARIODTO.COMIDA, 2);
+
+            inventarioDois.Add(ITEM_INVENTARIODTO.AGUA, 1);
+            
+            var negociacaoDto = new NegociacaoDto() {
+                codigoRebeldeUm = 4,
+                codigoRebeldeDois = 2,
+                itensDeTrocaRebeldeUm = inventarioUm,
+                itensDeTrocaRebeldeDois = inventarioDois 
+            };
+
+            for(int i = 0; i < 3; i ++) { reportarUseCase.Reportar(4); }
+
+            Assert.ThrowsAsync<RebeldeTraidorException>(() => negociacaoUseCase.Negociar(negociacaoDto));
+        }
+
+        [Fact]
+        public void Negociar_WhellCalled_WithRebelTwoAsTraitor_ShoudThrowRebeldeTraidorException() {
+            var inventarioUm = new Dictionary<ITEM_INVENTARIODTO, int>();
+            var inventarioDois = new Dictionary<ITEM_INVENTARIODTO, int>();
+            
+            // A soma de pontos vai dar certo e a quantidade também. Deve retornar true
+            inventarioUm.Add(ITEM_INVENTARIODTO.COMIDA, 2);
+
+            inventarioDois.Add(ITEM_INVENTARIODTO.AGUA, 1);
+            
+            var negociacaoDto = new NegociacaoDto() {
+                codigoRebeldeUm = 1,
+                codigoRebeldeDois = 4,
+                itensDeTrocaRebeldeUm = inventarioUm,
+                itensDeTrocaRebeldeDois = inventarioDois 
+            };
+
+            for(int i = 0; i < 3; i ++) { reportarUseCase.Reportar(4); }
+
+            Assert.ThrowsAsync<RebeldeTraidorException>(() => negociacaoUseCase.Negociar(negociacaoDto));
+
         }
     }
 }

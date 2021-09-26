@@ -91,6 +91,14 @@ namespace Resistence.Middleware
                         Idade = 170,
                         Nome = "C3PO",
                         Inventario = inventarioPadrao
+                    },
+                    new Rebelde
+                    {
+                        Id = 4,
+                        Genero = 'O',
+                        Idade = 170,
+                        Nome = "Jumbaka",
+                        Inventario = inventarioPadrao
                     }
                 );
 
@@ -116,6 +124,14 @@ namespace Resistence.Middleware
                     {
                         Id = 3,
                         RebeldeId = 3,
+                        Latitude = "20 graus sul",
+                        Longitude = "44 graus oeste",
+                        Nome = "Naboo"
+                    },
+                    new Localizacao
+                    {
+                        Id = 4,
+                        RebeldeId = 4,
                         Latitude = "20 graus sul",
                         Longitude = "44 graus oeste",
                         Nome = "Naboo"

@@ -25,6 +25,7 @@ namespace Resistence.UseCases
                 throw new RebeldeNaoEncontradoException();
             }
 
+            VerificarRebeldesTraidores(rebeldeUm, rebeldeDois);
             VerificarValorDosItensNegociacao(negociacao);
             VerificarConsistenciaItensNegociacaoComInventarioReal(negociacao, rebeldeUm, rebeldeDois);
 
@@ -101,6 +102,16 @@ namespace Resistence.UseCases
                 default: {
                     throw new ItemInventarioNaoEncontradoException();
                 }
+            }
+        }
+    
+        private void VerificarRebeldesTraidores(Rebelde um, Rebelde dois) {
+            if(um.Traidor) {
+                throw new RebeldeTraidorException(um.Id);
+            }
+
+            if(dois.Traidor) {
+                throw new RebeldeTraidorException(dois.Id);
             }
         }
     }
