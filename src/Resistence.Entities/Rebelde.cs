@@ -5,6 +5,7 @@ using Resistence.Entities.DTOs;
 using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Resistence.Entities.Exceptions;
 
 namespace Resistence.Entities
 {
@@ -59,6 +60,27 @@ namespace Resistence.Entities
 
                 default:
                     return ITEM_INVENTARIO.AGUA;
+            }
+        }
+
+        public void removerOuReduzirItemInventario(ITEM_INVENTARIODTO item, int quantidade) {
+            var itemCerto = pegarITEM_INVENTARIOCerto(item);
+            var quantidadeAtual = this.Inventario[itemCerto];
+            if(quantidadeAtual == quantidade) {
+                this.Inventario.Remove(itemCerto);
+            } else if(quantidadeAtual > quantidade) {
+                this.Inventario[itemCerto] -= quantidade;
+            } else {
+                throw new QuantidadeItemInventarioASerRemovidaMaiorQueQuantidadeAtualException();
+            }
+        }
+
+        public void adicionarOuIncrementarItemInventario(ITEM_INVENTARIODTO item, int quantidade) {
+            var itemCerto = pegarITEM_INVENTARIOCerto(item);
+            if(this.Inventario.ContainsKey(itemCerto)) {
+                this.Inventario[itemCerto] += quantidade;
+            } else {
+                this.Inventario.Add(new KeyValuePair<ITEM_INVENTARIO, int>(itemCerto, quantidade));
             }
         }
     }
