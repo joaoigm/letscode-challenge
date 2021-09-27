@@ -11,7 +11,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddResistenceInjections(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<EFContext>(options => {
-                options.UseSqlServer(configuration["DATABASE_CONNECTIONSTRING"] ?? "Server=db;Database=master;User Id=sa;Password=Resistence_Password");
+                options.UseSqlServer(configuration["DATABASE_CONNECTIONSTRING"]);
             });
             
             services.AddTransient<IRebeldesUseCase, RebeldesUseCase>();
