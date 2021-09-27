@@ -20,5 +20,10 @@ namespace Resistence.Tests.Fakes
             Longitude = novaLocalizacao.Longitude,
             Nome = novaLocalizacao.Nome
         };
+
+        public Task<object> Todos()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

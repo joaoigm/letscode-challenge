@@ -8,11 +8,11 @@ using System.Linq;
 
 namespace Resistence.UseCases
 {
-    public class NegociacaoUseCase : INegociacaoUseCase
+    public class NegociacaoUseCase : BaseUseCase, INegociacaoUseCase
     {
         private readonly EFContext _context; 
 
-        public NegociacaoUseCase(EFContext context) {
+        public NegociacaoUseCase(EFContext context): base(context) {
             _context = context;
         }
         public async Task<bool> Negociar(NegociacaoDto negociacao)

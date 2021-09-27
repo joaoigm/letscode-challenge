@@ -6,6 +6,7 @@ using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Resistence.Entities.Exceptions;
+using System.Text.Json.Serialization;
 
 namespace Resistence.Entities
 {
@@ -28,6 +29,7 @@ namespace Resistence.Entities
         [NotMapped]
         public IDictionary<ITEM_INVENTARIO, int> Inventario { get; set; }
 
+        [JsonIgnore]
         public string JsonInventory {
             get => JsonSerializer.Serialize(this.Inventario);
             set => Inventario = JsonSerializer.Deserialize<IDictionary<ITEM_INVENTARIO, int>>(value);
@@ -44,7 +46,11 @@ namespace Resistence.Entities
                 Longitude = dto.Localizacao.Longitude,
                 Nome = dto.Localizacao.Nome
             };
-            this.Inventario = new Dictionary<ITEM_INVENTARIO, int>((IDictionary<ITEM_INVENTARIO, int>)dto.Inventario.Select(data => new KeyValuePair<ITEM_INVENTARIO, int>(pegarITEM_INVENTARIOCerto(data.Key), data.Value)));
+            var inventario = new Dictionary<ITEM_INVENTARIO, int>();
+            foreach(var item in dto.Inventario) {
+                inventario.Add(pegarITEM_INVENTARIOCerto(item.Key), item.Value);
+            }
+            this.Inventario = inventario;
         }
 
         private ITEM_INVENTARIO pegarITEM_INVENTARIOCerto(ITEM_INVENTARIODTO item){
@@ -85,6 +91,7 @@ namespace Resistence.Entities
         }
     }
 
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum ITEM_INVENTARIO
     {
         ARMA,

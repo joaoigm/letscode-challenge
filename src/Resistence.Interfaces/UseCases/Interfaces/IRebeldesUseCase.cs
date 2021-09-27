@@ -8,5 +8,6 @@ namespace Resistence.Interfaces.UseCases.Interfaces
     {
         Task<AdicionarRebeldeResult> AdicionarRebelde(AdicionarRebeldeDto rebelde);
         Task<AtualizarLocalizacaoResult> AtualizarLocalizacao(LocalizacaoDto novaLocalizacao, int codigoRebelde);
+        Task<object> Todos();
     }
 }

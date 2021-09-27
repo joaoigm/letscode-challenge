@@ -2,7 +2,7 @@
 
 namespace Resistence.Middleware.Migrations
 {
-    public partial class firstMigration : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,10 +11,10 @@ namespace Resistence.Middleware.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(maxLength: 80, nullable: false),
                     Idade = table.Column<int>(nullable: false),
-                    Genero = table.Column<char>(nullable: false),
+                    Genero = table.Column<string>(nullable: false),
                     IndicacaoTraidor = table.Column<int>(nullable: false),
                     Traidor = table.Column<bool>(nullable: false),
                     JsonInventory = table.Column<string>(maxLength: 1000, nullable: true)
@@ -29,7 +29,7 @@ namespace Resistence.Middleware.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Latitude = table.Column<string>(nullable: true),
                     Longitude = table.Column<string>(nullable: true),
                     Nome = table.Column<string>(nullable: true),
@@ -49,32 +49,24 @@ namespace Resistence.Middleware.Migrations
             migrationBuilder.InsertData(
                 table: "Rebeldes",
                 columns: new[] { "Id", "Genero", "Idade", "IndicacaoTraidor", "JsonInventory", "Nome", "Traidor" },
-                values: new object[] { 1, 'M', 17, 0, "{\"AGUA\":10,\"ARMA\":1,\"COMIDA\":20,\"MUNICAO\":50}", "Poe Dameron", false });
-
-            migrationBuilder.InsertData(
-                table: "Rebeldes",
-                columns: new[] { "Id", "Genero", "Idade", "IndicacaoTraidor", "JsonInventory", "Nome", "Traidor" },
-                values: new object[] { 2, 'M', 50, 0, "{\"AGUA\":10,\"ARMA\":1,\"COMIDA\":20,\"MUNICAO\":50}", "Leia Organa", false });
-
-            migrationBuilder.InsertData(
-                table: "Rebeldes",
-                columns: new[] { "Id", "Genero", "Idade", "IndicacaoTraidor", "JsonInventory", "Nome", "Traidor" },
-                values: new object[] { 3, 'O', 170, 0, "{\"AGUA\":10,\"ARMA\":1,\"COMIDA\":20,\"MUNICAO\":50}", "C3PO", false });
+                values: new object[,]
+                {
+                    { 1, "M", 17, 0, "{\"AGUA\":10,\"ARMA\":1,\"COMIDA\":20,\"MUNICAO\":50}", "Poe Dameron", false },
+                    { 2, "M", 50, 0, "{\"AGUA\":10,\"ARMA\":1,\"COMIDA\":20,\"MUNICAO\":50}", "Leia Organa", false },
+                    { 3, "O", 170, 0, "{\"AGUA\":10,\"ARMA\":1,\"COMIDA\":20,\"MUNICAO\":50}", "C3PO", false },
+                    { 4, "O", 170, 0, "{\"AGUA\":10,\"ARMA\":1,\"COMIDA\":20,\"MUNICAO\":50}", "Jumbaka", false }
+                });
 
             migrationBuilder.InsertData(
                 table: "Localizacoes",
                 columns: new[] { "Id", "Latitude", "Longitude", "Nome", "RebeldeId" },
-                values: new object[] { 1, "20 graus sul", "44 graus oeste", "Endor moon", 1 });
-
-            migrationBuilder.InsertData(
-                table: "Localizacoes",
-                columns: new[] { "Id", "Latitude", "Longitude", "Nome", "RebeldeId" },
-                values: new object[] { 2, "20 graus sul", "44 graus oeste", "Kamino", 2 });
-
-            migrationBuilder.InsertData(
-                table: "Localizacoes",
-                columns: new[] { "Id", "Latitude", "Longitude", "Nome", "RebeldeId" },
-                values: new object[] { 3, "20 graus sul", "44 graus oeste", "Naboo", 3 });
+                values: new object[,]
+                {
+                    { 1, "20 graus sul", "44 graus oeste", "Endor moon", 1 },
+                    { 2, "20 graus sul", "44 graus oeste", "Kamino", 2 },
+                    { 3, "20 graus sul", "44 graus oeste", "Naboo", 3 },
+                    { 4, "20 graus sul", "44 graus oeste", "Naboo", 4 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Localizacoes_RebeldeId",

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Resistence.Entities;
@@ -10,17 +11,16 @@ using Resistence.Middleware;
 
 namespace Resistence.UseCases
 {
-    public class RebeldesUseCase : IRebeldesUseCase
+    public class RebeldesUseCase : BaseUseCase, IRebeldesUseCase
     {
 
         private readonly EFContext _context;
 
-        public RebeldesUseCase(EFContext context)
+        public RebeldesUseCase(EFContext context): base(context)
         {
             _context = context;
         }
 
-        public RebeldesUseCase() { }
         public async Task<AdicionarRebeldeResult> AdicionarRebelde(AdicionarRebeldeDto rebelde)
         {
             Rebelde newRebelde = new Rebelde(rebelde);
@@ -28,6 +28,11 @@ namespace Resistence.UseCases
             await _context.Rebeldes.AddAsync(newRebelde);
             await _context.SaveChangesAsync();
             return new AdicionarRebeldeResult(newRebelde);
+        }
+
+        public async Task<object> Todos() {
+            return await _context.Rebeldes
+                .ToListAsync();
         }
 
         public async Task<AtualizarLocalizacaoResult> AtualizarLocalizacao(LocalizacaoDto novaLocalizacao, int codigoRebelde)

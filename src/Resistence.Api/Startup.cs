@@ -25,8 +25,10 @@ namespace Resistence.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddResistenceInjections();
+            services.AddResistenceInjections(Configuration);
             services.AddControllers();
+
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,6 +38,12 @@ namespace Resistence.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Resistence API");
+            });
 
             app.UseHttpsRedirection();
 

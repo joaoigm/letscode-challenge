@@ -8,6 +8,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqLite" Version="3.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1" />
   </ItemGroup>
 
   <ItemGroup>

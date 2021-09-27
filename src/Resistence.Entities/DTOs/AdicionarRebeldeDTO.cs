@@ -17,7 +17,7 @@ namespace Resistence.Entities.DTOs
         public IDictionary<ITEM_INVENTARIODTO, int> Inventario { get; set; }
     }
 
-
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum ITEM_INVENTARIODTO
     {
         ARMA,

@@ -5,11 +5,11 @@ using Resistence.Middleware;
 
 namespace Resistence.UseCases
 {
-    public class ReportarUseCase : IReportarUseCase
+    public class ReportarUseCase : BaseUseCase, IReportarUseCase
     {
         private readonly EFContext _context;
 
-        public ReportarUseCase(EFContext context)
+        public ReportarUseCase(EFContext context): base(context)
         {
             _context = context;
         }
